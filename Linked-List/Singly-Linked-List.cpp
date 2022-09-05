@@ -33,6 +33,25 @@ void insertAtEnd(Node *&start, int data)
         temp->next = n1;
     }
 }
+void insertAtIndex(Node *&start, int data, int index){
+    Node *n1 = new Node;
+    n1->data = data;
+    if(start==NULL && index != 0){
+        return;
+    }
+    if(index==0){
+         insertAtStart(start, data);
+         return;
+    }
+    Node *temp;
+    temp = start;
+    while(index > 1){
+        temp = temp->next;
+        index--;
+    }
+    n1->next = temp->next;
+    temp->next = n1;
+}
 void deleteFirstNode(Node *&start)
 {
     if (start == NULL)
@@ -100,7 +119,7 @@ int main()
          << "\n";
     while (flag)
     {
-        cout << "\n1. Insert At Start\n2. Insert At End\n3. Delete First Node\n4. Delete Last Node\n5. Exit\n";
+       cout << "\n1. Insert At Start\n2. Insert At End\n3. Insert at index\n4. Delete First Node\n5. Delete Last Node\n6. Exit\n";
         cin >> ch;
         switch (ch)
         {
@@ -121,18 +140,29 @@ int main()
             cout << endl;
             break;
         case 3:
+            cout << "Enter data: ";
+            cin >> data;
+            cout<<"Enter the index: ";
+            int index;
+            cin>>index;
+            insertAtIndex(start, data, index);
+            cout << endl;
+            displayList(start);
+            cout << endl;
+            break;        
+        case 4:
             deleteFirstNode(start);
             cout << endl;
             displayList(start);
             cout << endl;
             break;
-        case 4:
+        case 5:
             deleteLastNode(start);
             cout << endl;
             displayList(start);
             cout << endl;
             break;
-        case 5:
+        case 6:
             flag = 0;
             break;
         default:
