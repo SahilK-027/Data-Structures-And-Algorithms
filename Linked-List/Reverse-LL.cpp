@@ -48,6 +48,19 @@ void reverseLL(Node *&head)
     }
     head = previous;
 }
+void reverseLL2(Node *&head)
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return; // Checking for Empty or single node LL
+    }
+    //Recursion will reverse list from head->next
+    reverseLL2(head->next);
+
+    //Our job is to reverse first Node
+    head->next->next = head;
+    head->next = NULL;
+}
 int main()
 {
     Node* start = NULL;
