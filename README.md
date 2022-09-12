@@ -3,6 +3,9 @@
 
 Please give this repo a ⭐ if you like it. Thanks. 😊
 
+
+Source ([GeeksForGeeks](https://www.geeksforgeeks.org/abstract-data-types/))
+
 ADT is a class of object whose behaviour is specified by a set of values and a set of operations.  It does not specify how data will be stored in memory or which algorithms will be utilised to carry out the actions. It is named "abstract" because it provides a view that is independent of implementation.
 
 ![alt text](https://media.geeksforgeeks.org/wp-content/uploads/20190828194629/ADT.jpg)
