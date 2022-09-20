@@ -19,6 +19,32 @@ void reverse(queue<int>& q){
         st.pop();
     }
 }
+
+//Approach 2: Using Recursion
+/*
+TC: O(N)
+SC: O(N)
+*/
+
+void reverse_2(queue<int>& q){
+    // Base Case
+    if(q.empty()){
+        return;
+    }
+
+    // Store and remove front element aside
+    int element = q.front();
+    q.pop();
+
+    // Call recursion to reverse remaining queue
+    reverse_2(q);
+
+    //cout<<element<<" ";
+
+    // Before returning push the removed element back in queue
+    q.push(element);
+}
+
 int main()
 {
     queue<int> q;
@@ -27,5 +53,9 @@ int main()
     q.push(3);
     q.push(4);
     reverse(q);
+    reverse_2(q);
     return 0;
 }
+
+
+
