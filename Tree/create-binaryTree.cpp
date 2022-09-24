@@ -94,6 +94,37 @@ void leveOrderTraversal(Node *root)
         }
     }
 }
+void buildFromLevelOrder(Node* &root)
+{
+    queue<Node *> q;
+    cout<<endl<<"Enter data for root ";
+    int data;
+    cin>>data;
+    root = new Node(data);
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node *temp = q.front();
+        q.pop();
+        
+        cout<<endl<<"Enter left node for "<<temp->data;
+        int leftdata;
+        cin>>leftdata;
+        if(leftdata != -1){
+            temp->left = new Node(leftdata);
+            q.push(temp->left);
+        }
+
+        cout<<endl<<"Enter right node for "<<temp->data;
+        int rightdata;
+        cin>>rightdata;
+        if(rightdata != -1){
+            temp->right = new Node(rightdata);
+            q.push(temp->right);
+        }
+    }
+}
 int main()
 {
     //Tree data : 1 3 7 -1 -1 9 -1 -1 5 11 -1 -1 -1
