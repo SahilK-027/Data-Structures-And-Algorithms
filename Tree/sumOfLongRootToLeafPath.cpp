@@ -25,7 +25,7 @@ private:
                 maxSum = sum;
             }
             else if(len == maxLen){
-                maxSum = sum;
+                maxSum = max(sum,maxSum);
             }
             return;
         }
