@@ -1,5 +1,17 @@
 // APPROACH 1:
 // USING INORDER TRAVERSAL
+
+/*
+STEP 1 :
+vector1 -> inorder1
+vector2 -> inorder2
+
+STEP 2 :
+Merge two sorted vectors
+
+STEP 3 :
+Convert sorted array to BST
+*/
 #include <bits/stdc++.h> 
 /*************************************************************
     
