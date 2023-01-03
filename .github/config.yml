@@ -1,0 +1,9 @@
+# Configuration for welcome - https://github.com/behaviorbot/welcome
+
+newIssueWelcomeComment: >
+  Thanks for opening your first issue here! 💖 Be sure to follow the issue template!
+newPRWelcomeComment: |
+  Thanks for opening this pull request! 💖 
+  Make sure you have read [contribution guidelines](https://github.com/SahilK-027/LeetCode/blob/main/CONTRIBUTING.md) and Follow the PR template!
+firstPRMergeComment: >
+  Congrats on merging your first pull request! We are proud of you! 🎉🎉🎉
