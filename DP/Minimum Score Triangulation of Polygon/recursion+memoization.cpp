@@ -1,33 +1,26 @@
 class Solution {
 private:
-    int solveMemoization(vector<int>& obs, int n, int currLane, int currPos, vector<vector<int>>& dp){
+    int solveMemoization(vector<int>& values, int i, int j, vector<vector<int>>& dp){
         // Base case
-        if(currPos == n) return 0;
+        if(i + 1 == j) return 0;
+        if(dp[i][j] != -1) return dp[i][j];
 
-        if(dp[currLane][currPos] != -1) return dp[currLane][currPos];
+        // Select k
+        int ans = INT_MAX;
+        for(int k = i + 1; k <= j -1 ; k++){
+            int curr_ans = values[i] * values[j] *  values[k] + 
+            solveMemoization(values, i, k, dp) + 
+            solveMemoization(values, k, j, dp);
 
-        // check next position in same lane
-        if(obs[currPos + 1] != currLane) return solveMemoization(obs, n, currLane, currPos+1, dp);
-
-        // Side ways jump
-        else{
-            int minJumps =INT_MAX;
-            for(int i = 1; i <= 3; i++){
-                // Jump in lane only if it is not curr lane
-                if(currLane != i){
-                    // Jump in lane only it does not has obstacle
-                    if(obs[currPos] != i){
-                        minJumps = min(minJumps, 1+ solveMemoization(obs, n, i, currPos, dp));
-                    }
-                }
-            }
-            return dp[currLane][currPos] =  minJumps;
+            ans = min(ans, curr_ans);
         }
+
+        // Return ans
+        return dp[i][j] =  ans;
     }
 public:
-    int minSideJumps(vector<int>& obstacles) {
-        int n = obstacles.size()-1;
-        vector<vector<int>> dp(3+1, vector<int>(obstacles.size()+1, -1));
-        return solveMemoization(obstacles,n,  2, 0, dp);
+    int minScoreTriangulation(vector<int>& values) {
+        vector<vector<int>>dp(values.size(), vector<int>(values.size(), -1));
+        return solveMemoization(values, 0, values.size()-1, dp);
     }
 };
