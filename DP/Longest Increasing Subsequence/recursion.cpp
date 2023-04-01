@@ -26,3 +26,33 @@ public:
         return size;
     }
 };
+
+
+/* ================================================================================================
+                        WITHOUT BUILDING ACTUAL SUBSEQUENCE
+==================================================================================================== */
+
+class Solution {
+private:
+    int solve(vector<int>& nums, int prev, int curr){
+        if(curr >= nums.size()){
+            return 0;
+        }
+        // Include 
+        int include = INT_MIN;
+        if(prev == -1 || nums[curr] > nums[prev]){
+            include = 1 + solve(nums, curr, curr+1);
+        }
+        // Exclude
+        int exclude = solve(nums, prev, curr+1);
+
+        return max(include, exclude);
+    }
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        if(nums.size() == 1) return 1;
+        int curr = 0;
+        int prev = -1;
+        return solve(nums, prev, curr);
+    }
+};
