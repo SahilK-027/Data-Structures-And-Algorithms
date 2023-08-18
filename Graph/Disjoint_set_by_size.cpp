@@ -34,11 +34,11 @@ public:
         int size_v = this->size[parent_v];
         if(size_u < size_v){
             this->parent[parent_u] = parent_v;
-            size_v += size_u;
+            size[parent_v] += size[parent_u];
         }
         else{
             this->parent[parent_v] = parent_u;
-            size_u += size_v;
+            size[parent_u] += size[parent_v];
         }
     }
 };
